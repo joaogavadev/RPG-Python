@@ -21,9 +21,9 @@ def tutorial():
         print("\nx-------------x-------------x-------------x-------------x-------------xTUTORIALx-------------x-------------x-------------x-------------x-------------x--------x")
         print("\n   Reposição de Habilidade, Energia e Sorte")
 
-        print("\n   Habilidade")
+        print("\n   Habilidade, Energia e Sorte ")
 
-        print("\nSeu índice de HABILIDADE não mudará muito durante a aventura; contudo, ocasionalmente, pode haver instruções para aumentá-lo ou diminuí-lo. Uma Arma Mágica poderá aumentar- lhe a HABILIDADE, mas lembre-se que só poderá usar uma arma de cada vez! Você não receberá dois prêmios de HABILIDADE por portar duas Espadas Mágicas. Seu índice de HABILIDADE nunca poderá ultrapassar o valor Inicial, a não ser que isso seja especificamente indicado. Beber a Poção da Habilidade (veja adiante) restabelecerá imediatamente seu índice de HABILIDADE.")
+        print("\nO índice de HABILIDADE reflete sua perícia como espadachim e sua aptidão geral como lutador; quanto mais alto, melhor.\n\nO índice de ENERGIA expressa sua condição geral, determinação de sobreviver, força de vontade e aptidão de uma maneira global; quanto mais alto, maior sua sobrevida.\n\nO índice de SORTE indica o quanto você é naturalmente uma pessoa de sorte. Sorte e magia são fatos da vida no reino da fantasia que você está prestes a explorar.")
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
@@ -33,7 +33,7 @@ def tutorial():
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
         print("\n   Energia e Provisões")
-        print("\nSeu índice de ENERGIA mudará muito durante a aventura, à medida que você luta com monstros e empreende tarefas árduas. Ao se aproximar de sua meta, seu nível de ENERGIA poderá estar perigosamente baixo, e as batalhas serão particularmente arriscadas; portanto tenha cuidado!\n\nSua mochila contém Provisões suficientes para 10 refeições. Você poderá descansar e comer a qualquer momento, exceto quando estiver no meio de uma Batalha. Uma refeição repõe 4 pontos de ENERGIA. Quando comer, acrescente 4 pontos a seu índice de ENERGIA e deduza 1 ponto de suas Provisões. É fornecido um quadro separado de Provisões Restantes na sua Folha de Aventuras. Não se esqueça que você tem um longo caminho a percorrer, por isso use suas Provisões com sabedoria!\n\nLembre-se também que o seu índice de ENERGIA nunca poderá exceder o valor Inicial, a não ser que isso seja especificamente indicado. Beber a Poção de Força (veja adiante) restabelecerá imediatamente seu índice Inicial de ENERGIA.")
+        print("\nSeu índice de ENERGIA mudará muito durante a aventura, à medida que você luta com monstros e empreende tarefas árduas. Ao se aproximar de sua meta, seu nível de ENERGIA poderá estar perigosamente baixo, e as batalhas serão particularmente arriscadas; portanto tenha cuidado!\n\nSua mochila contém Provisões suficientes para 10 refeições. Você poderá descansar e comer a qualquer momento, exceto quando estiver no meio de uma Batalha. Uma refeição repõe 4 pontos de ENERGIA. Quando comer, acrescente 4 pontos a seu índice de ENERGIA e deduza 1 ponto de suas Provisões. É fornecido um quadro separado de Provisões Restantes na sua Folha de Aventuras. Não se esqueça que você tem um longo caminho a percorrer, por isso use suas Provisões com sabedoria!\n\nLembre-se também que o seu índice de ENERGIA nunca poderá exceder o valor Inicial, a não ser que isso seja especificamente indicado. Beber a Poção de Força restabelecerá imediatamente seu índice Inicial de ENERGIA.")
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
@@ -41,7 +41,8 @@ def tutorial():
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
-        print("\n   Sorte\n\nAcréscimos a seu índice de SORTE serão concedidos, no decorrer da aventura, quando você tiver uma sorte particularmente grande. Os detalhes são dados nas páginas do livro. Lembre- se que, a exemplo dos índices de ENERGIA e HABILIDADE, seu índice de SORTE nunca poderá ultrapassar o valor Inicial, a não ser que isso seja especificamente indicado. Beber a Poção da Fortuna (veja adiante) recoloca a sua SORTE no nível Inicial, a qualquer momento, além de aumentar sua SORTE Inicial em 1 ponto.")
+        print("\n   Sorte")
+        print("\nAcréscimos a seu índice de SORTE serão concedidos, no decorrer da aventura, quando você tiver uma sorte particularmente grande. Os detalhes são dados nas páginas do livro. Lembre- se que, a exemplo dos índices de ENERGIA e HABILIDADE, seu índice de SORTE nunca poderá ultrapassar o valor Inicial, a não ser que isso seja especificamente indicado. Beber a Poção da Fortuna recoloca a sua SORTE no nível Inicial, a qualquer momento, além de aumentar sua SORTE Inicial em 1 ponto.")
 
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
@@ -51,7 +52,8 @@ def tutorial():
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
-        print("\n   Equipamentos e Poções\n\nVocê começará sua aventura com o mínimo essencial de equipamento, mas poderá achar ou comprar outros itens durante a viagem. Você está armado com uma espada e um escudo, veste uma armadura de couro e tem uma mochila para pôr provisões e quaisquer tesouros que venha a encontrar.\n\nAlém disso, você poderá levar uma garrafa com uma poção mágica que o ajudará na missão. Escolha uma destas:\n\nPoção da Habilidade - repõe os pontos de HABILIDADE.\nPoção da Força - repõe os pontos de ENERGIA.\nPoção da Fortuna - repõe os pontos de SORTE e acrescenta 1 ponto à SORTE Inicial.\n\nEssas poções poderão ser tomadas a qualquer momento da aventura (exceto durante um Combate). Uma dose de poção restabelecerá os níveis Iniciais dos índices de HABILIDADE, ENERGIA e SORTE (além disso, a Poção da Fortuna acrescentará 1 ponto a seu nível Inicial de SORTE).\n\nCada garrafa de poção contém o bastante para uma dose, isto é, a característica pode ser restituída uma vez durante a aventura. Quando usar a poção, registre o fato na sua Folha de Aventuras.\n\nLembre-se também que você só poderá levar uma das três poções em sua viagem: escolha com sabedoria!")
+        print("\n   Equipamentos e Poções")
+        print("\nVocê começará sua aventura com o mínimo essencial de equipamento, mas poderá achar ou comprar outros itens durante a viagem. Você está armado com uma espada e um escudo, veste uma armadura de couro e tem uma mochila para pôr provisões e quaisquer tesouros que venha a encontrar.\n\nAlém disso, você poderá levar uma garrafa com uma poção mágica que o ajudará na missão. Escolha uma destas:\n\nPoção da Habilidade - repõe os pontos de HABILIDADE.\nPoção da Força - repõe os pontos de ENERGIA.\nPoção da Fortuna - repõe os pontos de SORTE e acrescenta 1 ponto à SORTE Inicial.\n\nEssas poções poderão ser tomadas a qualquer momento da aventura (exceto durante um Combate). Uma dose de poção restabelecerá os níveis Iniciais dos índices de HABILIDADE, ENERGIA e SORTE (além disso, a Poção da Fortuna acrescentará 1 ponto a seu nível Inicial de SORTE).\n\nCada garrafa de poção contém o bastante para uma dose, isto é, a característica pode ser restituída uma vez durante a aventura. Quando usar a poção, registre o fato na sua Folha de Aventuras.\n\nLembre-se também que você só poderá levar uma das três poções em sua viagem: escolha com sabedoria!")
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
@@ -59,7 +61,56 @@ def tutorial():
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
-        print("\nDICAS PARA O JOGO\n\nHá um caminho seguro através do Calabouço da Morte, e você precisará fazer várias tentativas até encontrá-lo. Faça anotações e desenhe um mapa enquanto explora – esse mapa será de valor inestimável em aventuras futuras e lhe permitirá avançar rapidamente na direção das áreas inexploradas.\n\nNem todas as áreas contêm tesouros; muitas encerram apenas armadilhas e criaturas contra as quais você terá que medir forças. Há muitas passagens que levam a buscas inúteis, e, embora você possa de fato progredir até chegar ao seu destino final, não há qualquer garantia de que encontrará o que está procurando.\n\nVocê logo compreenderá que os itens não fazem sentido se forem lidos em ordem numérica. É essencial que você leia apenas os itens indicados, pois ler outros somente causará confusão, além de diminuir a emoção do jogo.\n\nO único caminho seguro envolve um mínimo de risco, e qualquer jogador, por mais fracos que sejam seus resultados iniciais nos dados, é capaz de chegar ao final com bastante facilidade.\n\n\n-Que a sorte dos deuses esteja com você na aventura à sua frente!-")
+        print("\n   Combates")
+        print("\nMuitas vezes você se defrontará com instruções para que lute contra algum tipo de criatura. Pode ser que exista uma opção de fuga, mas, se não houver - ou se você resolver atacar a criatura de qualquer maneira -, o combate será travado como se segue.\n\nPrimeiro, os índices de HABILIDADE e ENERGIA da criatura será registrado no primeiro quadro vazio de Encontros com Monstros da sua Folha de Aventuras.\nOs índices de cada criatura são dados a cada encontro. \n\nA sequência de combate é a seguinte: \n\n1- Jogue os dois dados uma vez para a criatura. Some o número obtido ao índice de HABILIDADE dela. Esse total é a Força de Ataque da criatura. \n\n2- Jogue os dois dados uma vez para você. Some o número obtido ao seu índice atual de HABILIDADE. Esse total é a sua Força de Ataque.\n\n3- Se sua Força de Ataque for maior que a da criatura, você a feriu. Siga para o item 4. Se a Força de Ataque da criatura for maior que a sua ela o feriu. Siga para o item 5. Se os dois totais de Força de Ataque forem iguais, vocês conseguiram evitar os golpes um do outro - comece a próxima Série de Ataque a partir do item 1 acima.\n\n4- Você feriu a criatura, subtraia 2 pontos do índice de ENERGIA dela.Você poderá usar sua SORTE para causar danos mais graves.\n\n5- A criatura feriu você, subtraia 2 pontos de seu índice de ENERGIA. Novamente, você poderá usar sua SORTE nessa fase.\n\n6- Faça os ajustes apropriados no índice de ENERGIA da criatura ou no seu próprio (e no seu índice de SORTE, se a tiver usado - veja adiante).\n\n7- Comece a próxima Série de Ataque, retornando a seu índice de HABILIDADE atual e repetindo os itens de 1-6. Esta sequência continua até que um dos índices de ENERGIA - seu, ou da criatura - fique reduzido a zero (morte).")
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+
+        input("\nPressione Enter para continuar...")
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+        print("\n   Fuga")
+        print("\nEm algumas páginas pode haver a opção de escapar de um combate, caso as coisas estejam indo mal para você. Porém, ao escapar da criatura, esta automaticamente lhe causará um ferimento (subtraia 2 pontos de ENERGIA). Esse é o preço da covardia. Repare que você poderá usar a SORTE, da maneira normal, nesse ferimento (veja adiante). Você só poderá Fugir se esta opção lhe for especificamente dada na página.")
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+
+        input("\nPressione Enter para continuar...")
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+        print("\n   Sorte")
+        print("\nEm vários momentos da aventura, tanto em batalhas como em situações nas quais poderá ter ou não sorte (os detalhes dessas situações são dados nas próprias páginas), você poderá apelar para a sorte, a fim de tornar o resultado mais favorável. Mas tome cuidado! Usar a sorte é uma coisa arriscada, e, se você não tiver sorte, as consequências podem ser desastrosas.")
+        
+        print("\nO procedimento para usar a sorte é o seguinte: jogue os dois dados. Se o número obtido for igual ou menor que o seu índice de SORTE atual, você teve sorte, e o resultado lhe será favorável. Se o número obtido for maior que o seu índice de SORTE atual, você não teve sorte, e sofrerá as consequências.")
+
+        print("\nEsse procedimento é conhecido como: Teste sua Sorte. Cada vez que Testar sua Sorte, você terá que subtrair 1 ponto do seu índice de SORTE do momento. Assim, você logo compreenderá que, quanto mais confiar na sorte, mais riscos correrá. ")
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+
+        input("\nPressione Enter para continuar...")
+
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+
+        print("\n   Sorte em combate")
+        print("\nEm determinadas páginas, você será instruído a Testar sua Sorte, e saberá das conseqüências de ter ou não sorte. Porém, nos combates, você sempre terá a opção de usar a sorte, seja para causar um ferimento mais grave na criatura que acabou de ferir, seja para minimizar os efeitos de um ferimento que a criatura lhe causou.")
+
+        print("\nSe você acabou de ferir a criatura, poderá Testar sua Sorte, conforme descrito acima. Se você tiver sorte, causou um ferimento grave, e poderá subtrair 2 pontos extras do índice de ENERGIA da criatura. Porém, se você não tiver sorte, o ferimento foi um mero arranhão, e terá que repor 1 ponto à ENERGIA da criatura (isto é, em vez dos 2 pontos normais de danos, você causou apenas 1).")
+
+
+        print("\nSe a criatura tiver acabado de feri-lo, você poderá Testar sua Sorte, para tentar minimizar o ferimento. Se você tiver sorte, o ferimento foi um mero arranhão. Reponha 1 ponto de ENERGIA (isto é, em vez de 2 pontos normais de danos, ela causou apenas 1). Se você não tiver sorte, recebeu um ferimento mais grave. Subtraia 1 ponto extra de ENERGIA.\n\nLembre-se: você tem que subtrair 1 ponto de seu próprio Índice de SORTE a cada vez que Testar sua Sorte. ")
+
+
+        print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
+
+
+        print("\n   DICAS PARA O JOGO")
+        print("\nHá um caminho seguro através do Calabouço da Morte, e você precisará fazer várias tentativas até encontrá-lo. Faça anotações e desenhe um mapa enquanto explora – esse mapa será de valor inestimável em aventuras futuras e lhe permitirá avançar rapidamente na direção das áreas inexploradas.\n\nNem todas as áreas contêm tesouros; muitas encerram apenas armadilhas e criaturas contra as quais você terá que medir forças. Há muitas passagens que levam a buscas inúteis, e, embora você possa de fato progredir até chegar ao seu destino final, não há qualquer garantia de que encontrará o que está procurando.\n\nVocê logo compreenderá que os itens não fazem sentido se forem lidos em ordem numérica. É essencial que você leia apenas os itens indicados, pois ler outros somente causará confusão, além de diminuir a emoção do jogo.\n\nO único caminho seguro envolve um mínimo de risco, e qualquer jogador, por mais fracos que sejam seus resultados iniciais nos dados, é capaz de chegar ao final com bastante facilidade.\n\n\n-Que a sorte dos deuses esteja com você na aventura à sua frente!-")
 
         print("\nx-------------x-------------x-------------x-------------x-------------x--------x-------------x-------------x-------------x-------------x-------------x--------x")
 
@@ -146,7 +197,6 @@ def inicio():
     #inicialização do jogo + loop de tutorial
 
 def aventura1():
-    print("1 -")
     print("\nO clamor dos espectadores excitados some gradualmente atrás de você, que se aventura cada vez mais fundo na penumbra do túnel da caverna. ")
 
     print("\nGrandes cristais pendem do teto do túnel a intervalos de 20 metros, irradiando uma luz suave, apenas suficiente para que se veja por onde anda. À medida que seus olhos vão pouco a pouco se acostumando à quase escuridão, você começa a ver movimentos à sua volta. Aranhas e besouros sobem e descem pelas paredes entalhadas, desaparecendo em frestas e gretas ao sentir sua aproximação; ratazanas e ratos correm pelo chão à sua frente. Pingos de água caem em pequenas poças com um sinistro som gotejante que ecoa pelo túnel. O ar é frio, úmido e pesado. Depois de caminhar lentamente pelo túnel por uns cinco minutos, você chega a uma mesa de pedra encostada contra a parede à sua esquerda. Nela há seis caixas, uma das quais tem o seu nome pintado na tampa. Se você quiser abrir a caixa, vá para 270. Se preferir continuar caminhando para o norte, vá para 66.")
@@ -1720,8 +1770,36 @@ tut = input().lower()
 if tut == "s":
     tutorial()
 
+#INICIO DO JOGO
+
 inicio()
 
 aventura1()
+print("\nir para 270 ou 66?")
+print("")
+escolha1 = input()
 
-av_1 = input("270 ou 66?")
+if escolha1 == "270":
+    aventura270()
+    input("\nPressione Enter para voltar para 66...")
+    aventura66()
+    print("")
+    escolha1 = input("ir para 293 ou 191?")
+    if escolha1 == "293":
+        aventura293()
+        print("")
+        escolha1 = input("ir para 137 ou 387")
+
+    elif escolha1 == "191":
+        aventura191()
+        
+        if escolha1 == "137":
+            aventura137()
+
+
+
+
+
+
+elif escolha1 == "66":
+    aventura66()

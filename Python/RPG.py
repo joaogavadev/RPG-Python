@@ -1,8 +1,7 @@
 import random
 
 def roda_1_dado():
-    dado1 = random.randint(1, 6)
-    return dado1
+    return random.randint(1, 6)
 #armazenando resultado dos dados
 dado1 = roda_1_dado()
 dado_Energia1 = roda_1_dado()
@@ -10,14 +9,27 @@ dado_Energia2 = roda_1_dado()
 dado_Sorte = roda_1_dado()
 
 
-
-
 #armazenando os perks em variaveis para alterar futuramente
 habilidade = 6 + dado1
 energia = 12 + dado_Energia1 + dado_Energia2
 sorte = 6 + dado_Sorte
 
-print()
+
+def usar_sorte(sorte):
+    dado_1 = random.randint(1, 6)
+    dado_2 = random.randint(1, 6)
+    soma_dados = dado_1 + dado_2
+    input("\nPressione Enter para rodar o primeiro dado para testar sua sorte...")
+    print(f"\nO primeiro dado resultou em: {dado_1}")
+    input("\nPressione Enter para rodar seu proximo dado...")
+    print(f"O segundo dado resultado em: {dado_2}")
+    print(f"\nA soma dos dados é {soma_dados},e seu nivel de sorte atual é {sorte}")
+
+    if soma_dados <= sorte :
+        return True
+    else:
+        return False
+
 def tutorial():
     rep = "s"
     while rep == "s":
@@ -207,9 +219,13 @@ def inicio():
 
 def fim_de_jogo():
     print("\nFim de jogo! Sua aventura termina aqui!")
-    chose = input("Deseja jogar novamente?: (responda com'S' ou 'N').lower\n")
-    if chose == 'S':
+    chose = input("\nDeseja jogar novamente? (responda com'S' ou 'N'):\n").lower
+    if chose == 's':
+        char_perks()
         inicio()
+        aventura1()
+
+
 
 
 def aventura1():
@@ -223,7 +239,7 @@ def aventura1():
 
     match escolha:
         case "270":
-            aventura270()
+            aventura5()
         case "66":
             aventura66()
         case _:
@@ -235,7 +251,7 @@ def aventura2():
     print("CAP 2\n")
     print("\nO Escorpião consegue prendê-lo nas garras por tempo suficiente para mover a cauda segmentada para frente, por sobre a cabeça, e cravar em você o ferrão venenoso. O efeito é fatal, e você desaba no chão da Arena da Morte, imaginando se Throm conseguirá vencer.")
 
-    input("\nGame over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #morte
 def aventura3():
     print(stats_final)
@@ -243,7 +259,7 @@ def aventura3():
     print("CAP 3\n")
     print("\nO Gnomo sacode a cabeça e diz: 'Temo que você não tenha passado pela Prova dos Campeões. Os segredos do Calabouço da Morte do Barão Sukumvit ficarão guardados por mais um ano, pois você não terá permissão para sair daqui. Você foi indicado para ser meu servo pelo resto dos seus dias; preparará e modificará o subterrâneo para competidores futuros. Talvez em outra vida você tenha sucesso...' ")
 
-    input("\nGame Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #morte
 def aventura4():
     print(stats_final)
@@ -251,13 +267,24 @@ def aventura4():
     print("CAP 4\n")
     print("\na escuridão total, você não vê a curva do cano para baixo. Escorrega e, incapaz de se segurar no cano cheio de limo, desliza pela borda. Seus gritos ecoam pelo tubo, enquanto você cai 50 metros até o fundo. Você fracassou na Prova dos Campeões.")
 
-    input("\nGame Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #sorte
 def aventura5():
     print(stats_final)
     print("")
     print("CAP 5\n")
     print("Você se arrasta pelo chão e se vê no covil de uma tribo de TROGLODITAS. Ao engatinhar passando por eles, sua bainha bate em uma pedra. Teste sua Sorte. Se você tiver sorte, vá para 185. Se você não tiver sorte, vá para 395.")
+
+    if usar_sorte(sorte):
+        print("Voce deu sorte!")
+        input("Pressione Enter para seguir para 185")
+        aventura185()
+    else:
+        print("Você deu má sorte!")
+        input("Pressione Enter para seguir para 395")
+        aventura395()
+
+
 #batalha
 def aventura6():
     print(stats_final)
@@ -270,7 +297,7 @@ def aventura7():
     print("")
     print("CAP 7\n")
     print("\nAntes que você tenha tempo de chegar a uma porta, o rochedo já está sobre você, que grita de dor e medo quando ele o esmaga no chão. Sua aventura termina aqui.")
-    input("\nGame Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #morte
 def aventura8():
     print(stats_final)
@@ -278,7 +305,7 @@ def aventura8():
     print("CAP 8\n")
     print("\nO Demônio do Espelho agarra-o pelo pulso. Imediatamente, ele começa a puxá-lo na direção do espelho. A força dele é incrível, e, apesar de todos os seus esforços, você não consegue evitar que o arraste progressivamente na direção do espelho. Quando ele toca o espelho, parece desaparecer diretamente através dele. Horrorizado, você vê seu próprio braço desaparecer, seguido pelo resto do corpo. Você está agora em um mundo de espelhos de outra dimensão, do qual jamais retornará.")
 
-    input("\n Game Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #nrm
 def aventura9():
     print(stats_final)
@@ -333,7 +360,7 @@ def aventura12():
         case '250':
             aventura250()
         case _:
-            print("Opção Invalida.")
+            print("\nOpção Invalida.")
 
 def aventura13():
     print(stats_final)
@@ -341,12 +368,14 @@ def aventura13():
     print("CAP 13\n")
     print("\nO túnel faz uma curva abrupta para a esquerda e se dirige para o norte, tanto quanto a sua vista alcança. As pegadas que você está seguindo começam a sumir à medida que o túnel vai ficando mais seco. Logo não vê mais o teto gotejante e as poças no chão. Você repara que o ar está se tornando mais quente, e se vê ofegante, embora esteja andando bem devagar. Em uma pequena reentrância da parede da esquerda, você vê um pedaço de bambu na vertical. Levantando-o, repara que ele está cheio de um líquido claro. Sua garganta está dolorosamente seca, e você se sente um pouco tonto por causa do calor no túnel. Se quiser beber o líquido, vá para 141. Se não quiser se arriscar a beber e preferir continuar para o norte, vá para 182.")
     
-    escolha = input("\Ir para 141 ou 182?: \n")
+    escolha = input("\nIr para 141 ou 182?: \n")
     match escolha:
         case '141':
             aventura141()
         case '182':
             aventura182()
+        case _:
+            print("\nOpção Invalida")
 
 def aventura14():
     print(stats_final)
@@ -362,7 +391,7 @@ def aventura14():
         case '310':
             aventura310()
         case _:
-            print("Opção Invalida.")
+            print("\nOpção Invalida.")
 
 def aventura15():
     print(stats_final)
@@ -392,7 +421,7 @@ def aventura16():
         case '249':
             aventura249()
         case _:
-            print("Opção Invalida.")
+            print("\nOpção Invalida.")
 
 def aventura17():
     print(stats_final)
@@ -400,7 +429,7 @@ def aventura17():
     print("CAP 17\n")
     print("\nVocê não é forte o bastante para forçar e abrir a pesada porta. A água já está na cintura agora, e você está exausto por causa dos esforços. O nível da água sobe rapidamente, e você se vê boiando cada vez mais alto. Até que seu rosto fica imprensado contra o teto. Logo fica completamente imerso e não tem como prender a respiração por mais tempo. Sua aventura termina aqui. ")
 
-    input("Game Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 #JOGAR DADO 
 def aventura18():
     print(stats_final)
@@ -415,7 +444,7 @@ def aventura19():
     print("CAP 19\n")
     print("Você não consegue resistir ao olhar hipnótico da Medusa quando seus olhares se encontram. Sente os membros enrijecerem e entra em pânico, indefeso, enquanto se transforma em pedra. Sua aventura termina aqui.")
     
-    input("Game Over! Pressione Enter para finalizar o jogo...")
+    fim_de_jogo()
 
 def aventura20():
     print("Somente sua incrível força poderia resistir à mordida da aranha venenosa. Contudo, você está enfraquecido e repara que sua mão está tremendo ao colocar a Peça de Ouro no bolso. Reduza sua HABILIDADE em 1 ponto. Você amaldiçoa a pessoa que largou a mochila e parte para o norte de novo. Vá para 279. ")
@@ -462,6 +491,8 @@ def aventura33():
 def aventura34():
     print("\nVocê tenta forçar por baixo da esmeralda com a ponta da espada. Para sua grande surpresa, a esmeralda se despedaça com o contato, soltando um jato de gás venenoso diretamente no seu rosto. O gás o faz desmaiar, e você solta a corda, despenca do ídolo e cai no chão de pedra. Sua aventura termina aqui. ")
 
+    fim_de_jogo()
+
 def aventura35():
     print("\nO túnel continua para o oeste por várias centenas de metros, terminando finalmente em alguns degraus que conduzem a um alçapão fechado. Você sobe os degraus lentamente, ouvindo vozes abafadas acima. Na penumbra, você pode ver que o alçapão não está trancado. Se quiser bater na porta do alçapão, vá para 333. Se preferir irromper pela porta com a espada desembainhada, vá para 124. ")
 
@@ -494,6 +525,8 @@ def aventura43():
 
 def aventura44():
     print("\nVocê está a apenas alguns metros da porta quando ouve o velho atrás de si enunciar umas palavras estranhas. Instantaneamente, sente os músculos endurecerem e a pele esticar. Você entra em pânico, mas não há nada que possa fazer para impedir a petrificação do seu corpo. Sua aventura termina aqui. ")
+
+    fim_de_jogo()
 
 
 def aventura45():
@@ -560,7 +593,10 @@ def aventura60():
 
 
 def aventura61():
+    print("\nCAP 61\n")
     print("\nApesar do terrível ruído de campainha nos seus ouvidos, você ouve passos descendo pelo túnel. Seus gritos altos atraíram um guardião do túnel. Há um HOBGOBLIN de pé junto a você. Ele sorri doentiamente enquanto pressiona a ponta da espada contra seu pescoço. Você não tem como se defender e impedir que ele o trespasse. Sua aventura termina aqui. ")
+
+    fim_de_jogo()
 
 
 def aventura62():
@@ -690,6 +726,8 @@ def aventura84():
 
 def aventura85():
     print("\nAntes que você possa fazer qualquer outra coisa, o velho murmura umas palavras estranhas. Você sente os músculos se enrijecerem e a pele se esticar. Começa a entrar em pânico, mas não há nada que possa fazer para impedir a petrificação do seu corpo. Sua aventura termina aqui. ")
+    
+    fim_de_jogo()
 
 
 def aventura86():
@@ -928,6 +966,8 @@ def aventura139():
 def aventura140():
     print("\nVocê tenta forçar o olho de esmeralda com a ponta da espada, procurando enfiá-la por baixo dele. Para sua grande surpresa, ele se despedaça com o contato, soltando um jato de gás venenoso direto no seu rosto. Você desmaia e cai para trás, chocando-se contra o ídolo várias vezes até parar no chão de pedra. Sua aventura termina aqui. ")
 
+    fim_de_jogo()
+
 
 def aventura141():
     print("\nO Demônio do Espelho está quase em cima de você quando, reunindo todas as suas forças, você desfere um golpe decisivo contra o espelho com a espada. Jogue dois dados. Se o total for igual ou menor que a sua HABILIDADE, volte para 72. Se o total for maior que a sua HABILIDADE, volte para 96. ")
@@ -1138,7 +1178,10 @@ def aventura192():
 
 
 def aventura193():
+    print("CAP 193\n")
     print("\nO ácido queima a parede do seu estômago, penetrando nos seus órgãos vitais. Você tomba inconsciente para nunca mais se recuperar. Sua aventura termina aqui.")
+
+    fim_de_jogo()
 
 
 def aventura194():
@@ -1310,9 +1353,13 @@ def aventura232():
 def aventura233():
     print("\nVocê parte um pedaço grande do cogumelo e o mastiga ansiosamente. De imediato, seu estômago incha, e você pode mesmo vê-lo estufando por baixo do cinto. Todo o seu corpo começa a se expandir, rasgando-lhe ruidosamente as roupas. Você fica cada vez maior, e logo seu rosto está imprensado de encontro ao teto. Os cogumelos que você comeu são muito procurados por mágicos para as poções de crescimento, mas para você eles significam a morte. Você está grande demais para poder algum dia sair da adega. Sua aventura termina aqui. ")
 
+    fim_de_jogo()   
+
 
 def aventura234():
     print("\nUm pouco mais adiante, você chega a uma parte do túnel coberta de lodo verde e espesso. Parece ameaçador, por isso você resolve testá-lo primeiro com um pedaço de pano. A pasta corrosiva do lodo queima o pano instantaneamente, não deixando nem sinal dele. Se você estiver carregando um par de pernas-de-pau, volte para 183. Se não as tiver, volte para 207. ")
+ 
+    fim_de_jogo()
 
 
 def aventura235():
@@ -1664,6 +1711,8 @@ def aventura316():
 def aventura317():
     print("\nTateando nos lados do buraco perfurado com sua espada, você abre caminho cegamente pelo lodo viscoso. Você segue as curvas e reviravoltas do orifício por um tempo que parece ser uma eternidade e começa a imaginar onde poderia levar. De repente, você ouve o ruído de alguma coisa se arrastando à frente. Você fica gelado de medo, seus olhos tentando desesperadamente rasgar a escuridão impenetrável. Antes que você se dê conta do que está acontecendo, seu pescoço é abocanhado pelas fortíssimas mandíbulas de outro Verme da Rocha. E o companheiro daquele que você matou, o qual foi atraído pelo cheiro de sangue na sua espada. Ele aperta mais forte. Seu pescoço estala como um ramo seco. Sua aventura termina aqui. ")
 
+    fim_de_jogo()
+
 
 def aventura318():
     print("\nDepois de cruzar a ponte, você atravessa a caverna correndo. Finalmente, vê um túnel na parede do outro lado, pelo qual você entra a toda. O túnel termina numa pesada porta de madeira, e ela está trancada. Se você tiver uma chave de ferro, volte para 86. Se não tiver uma chave, volte para 276. ")
@@ -1727,6 +1776,8 @@ def aventura332():
 
 def aventura333():
     print("\nVocê ouve passos e, de repente, a porta do alçapão é jogada para trás. Por alguns segundos, você é cegado pela intensa luz que vem do aposento de cima, e não vê o Goblin desferir um golpe de lança, nem ouve o riso sádico quando a ponta rasga seu pescoço. Sua aventura termina aqui, nos degraus de pedra do túnel. ")
+
+    fim_de_jogo()
 
 
 def aventura334():
@@ -1858,7 +1909,10 @@ def aventura365():
 
 
 def aventura366():
+    print("\nAP 366\n")
     print("\nA temperatura continua a subir, muito além dos limites de tolerância humanos. Estendido no chão quase derretido do túnel, você não consegue recuperar a consciência. Sua aventura termina aqui.")
+
+    fim_de_jogo()
 
 
 def aventura367():
@@ -1894,7 +1948,10 @@ def aventura374():
 
 
 def aventura375():
+    print("\nCAP 375")
     print("\nUma fumaça acre emana da moringa quando você enfia o pano nela. O líquido é indubitavelmente ácido. Você arrolha a moringa de novo e a coloca na mochila, esperando que venha a ter utilidade mais tarde. Você recoloca a espada na bainha e prossegue rumo ao norte. Volte para 110. ")
+    input("\nPressione Enter para retornar para 110...")
+    aventura110()
 
 
 def aventura376():

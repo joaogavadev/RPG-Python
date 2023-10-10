@@ -8,6 +8,18 @@ dado_Energia1 = roda_1_dado()
 dado_Energia2 = roda_1_dado()
 dado_Sorte = roda_1_dado()
 
+#MONSTROS
+def Besta_Sangrenta():
+    global Besta_Hab, Besta_Ener
+    Besta_Hab = 12
+    Besta_Ener = 10
+
+    if Besta_Ener or Besta_Hab == 0:
+        print("Besta derrotada!, voce venceu!")
+
+    return Besta_Hab, Besta_Ener
+
+
 
 #armazenando os perks em variaveis para alterar futuramente
 habilidade = 6 + dado1
@@ -29,6 +41,26 @@ def usar_sorte(sorte):
         return True
     else:
         return False
+
+def usar_habilidade(habilidade):
+    dado_1 = random.randint(1, 6)
+    dado_2 = random.randint(1, 6)
+    soma_dados = dado_1 + dado_2
+    input("\nPressione Enter para rodar o primeiro dado para testar sua sorte...")
+    print(f"\nO primeiro dado resultou em: {dado_1}")
+    input("\nPressione Enter para rodar seu proximo dado...")
+    print(f"O segundo dado resultado em: {dado_2}")
+    print(f"\nA soma dos dados é {soma_dados}, e seu nivel de habilidade atual é {habilidade}")
+
+    if soma_dados <= habilidade :
+        return True
+    else:
+        return False
+    
+def alterar_habilidade(habilidade, valor):
+    habilidade += valor
+    return habilidade
+
 
 def tutorial():
     rep = "s"
@@ -160,7 +192,67 @@ char_perks()
 stats_final = (f"\nx---SEU PERSONAGEM--x\n|Habilidade = {habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x")
 
 
+def batalha(nivel_monstro, energia_monstro, habilidade_personagem, sorte_personagem):
+    print("\nA batalha começou! O que você deseja fazer?")
+    
+    while energia_monstro > 0 and habilidade_personagem > 0:
+        # Exiba informações sobre a batalha, como a energia do monstro e habilidade do personagem
+        print(f"Nível do monstro: {nivel_monstro}")
+        print(f"Energia do monstro: {energia_monstro}")
+        print(f"Sua habilidade: {habilidade_personagem}")
+        print(f"Sua sorte: {sorte_personagem}")
 
+        # Opções para o jogador
+        print("\nOpções:")
+        print("1. Atacar")
+        print("2. Fugir")
+        print("3. Usar sorte")
+
+        escolha = input("Escolha sua ação (1, 2 ou 3): ")
+
+        if escolha == '1':
+            # O jogador escolheu atacar
+            dano_personagem = random.randint(1, 6)  # Simula um ataque aleatório
+            dano_monstro = random.randint(1, 6)  # Simula um ataque do monstro
+
+            # Reduza a energia do monstro com base no dano causado
+            energia_monstro -= dano_personagem
+            print(f"Você causou {dano_personagem} de dano ao monstro.")
+            print(f"O monstro causou {dano_monstro} de dano a você.")
+
+            # Verifique se o monstro foi derrotado
+            if energia_monstro <= 0:
+                print("Você derrotou o monstro!")
+                break
+
+            # Verifique se o personagem foi derrotado
+            if habilidade_personagem <= 0:
+                print("Você foi derrotado pelo monstro...")
+                break
+
+        elif escolha == '2':
+            # O jogador escolheu fugir
+            chance_fuga = random.randint(1, 6) + habilidade_personagem + sorte_personagem
+            
+            if chance_fuga >= 12:  # Você decide a condição para a fuga bem-sucedida
+                print("Você conseguiu fugir da batalha!")
+                break
+            else:
+                print("Você não conseguiu fugir e precisa continuar a batalha.")
+
+        elif escolha == '3':
+            # O jogador escolheu usar sorte
+            dado_sorte = roda_1_dado()  # Jogue um dado de sorte
+            print(f"Você jogou um dado de sorte e obteve: {dado_sorte}")
+
+            if dado_sorte >= 4:  # Defina a condição para a sorte ser favorável
+                print("Sua sorte está com você! Você causou dano extra ao monstro.")
+                energia_monstro -= random.randint(1, 6) + sorte_personagem
+            else:
+                print("Sua sorte não ajudou desta vez.")
+
+        else:
+            print("Opção inválida. Escolha 1 para atacar, 2 para fugir ou 3 para usar sorte.")
 
 
 def inicio():
@@ -219,12 +311,14 @@ def inicio():
 
 def fim_de_jogo():
     print("\nFim de jogo! Sua aventura termina aqui!")
-    chose = input("\nDeseja jogar novamente? (responda com'S' ou 'N'):\n").lower
-    if chose == 's':
+    escolha = input("\nDeseja jogar novamente? (responda com 'S' ou 'N'): ").capitalize()
+    
+    if escolha == 'S':
         char_perks()
         inicio()
         aventura1()
-
+    elif escolha == 'N':
+        print("Até a próxima!")
 
 
 
@@ -239,7 +333,7 @@ def aventura1():
 
     match escolha:
         case "270":
-            aventura5()
+            aventura270()
         case "66":
             aventura66()
         case _:
@@ -672,8 +766,27 @@ def aventura71():
     print("\nMais uma vez, você estica a mão para o pergaminho, só que dessa vez ele está em meio a uma pilha de ossos quebrados. Ao desenrolá-lo, você vê o mapa de um aposento com o desenho de uma criatura pavorosa dentro. Embaixo da figura do monstro, há uma rima que diz: \n\n“Se você encontrar o Mantécora,\nÉ bom de sua cauda cuidar.\nProteja-se dos espinhos\nQue irão voar pelo ar. \n\nVocê enrola o pedaço de pergaminho e o coloca na mochila. Repetindo a rima muitas vezes para si mesmo, você caminha para o outro lado, em direção à alcova. Vá para 128. ")
 
 
-def aventura72():
+def aventura72(habilidade):
+    global nv_habilidade, nv_statfinal
+    print(f"{stats_final}\n")
+    print("CAP 72\n")
     print("\nO Espelho se quebra, lançando fragmentos de vidro por toda parte. As quatro faces do Demônio do Espelho gritam de agonia, e aparecem rachaduras em todas elas. Em seguida, elas também se partem e caem ao chão numa pilha de cacos de vidro. Infelizmente ao quebrar o espelho, você cortou seriamente o braço com que segura a espada. Embora sua força não tenha sido afetada, sua habilidade com as armas foi prejudicada. Você perde 2 pontos de HABILIDADE antes de continuar na sua jornada para o norte. Vá para 122 ")
+    
+    nv_habilidade = alterar_habilidade(habilidade, -2)
+
+    print(f"\nsua habilidade era {habilidade}")
+
+    print(f"\nsua habilidade agora é {nv_habilidade} apos perder 2 pontos")
+
+    input("\nAperte Enter para ir para 122...")
+
+    nv_statfinal = (f"\nx---SEU PERSONAGEM--x\n|Habilidade = {nv_habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x")
+
+    aventura122()
+
+    return habilidade
+
+
 
 
 def aventura73():
@@ -877,6 +990,10 @@ def aventura121():
 def aventura122():
     print("\nÀ sua frente, há dois lances de escadas de pedra, separados por um corrimão de crânios de ratazana. Você pode subir pelo lance de escadas da esquerda - vá para 176 - ou pelo da direita - vá para 384. ")
 
+    print(nv_statfinal)
+
+    print(nv_habilidade)
+
 
 
 def aventura123():
@@ -971,6 +1088,17 @@ def aventura140():
 
 def aventura141():
     print("\nO Demônio do Espelho está quase em cima de você quando, reunindo todas as suas forças, você desfere um golpe decisivo contra o espelho com a espada. Jogue dois dados. Se o total for igual ou menor que a sua HABILIDADE, volte para 72. Se o total for maior que a sua HABILIDADE, volte para 96. ")
+
+    if usar_habilidade(habilidade):
+        print("\nVocê deu sorte!\n")
+
+        input("\nPressione Enter para retornar para 72...")
+        aventura72(habilidade)
+    else:
+        print("Você não deu sorte!")
+
+        input("\nPression Enter para retornar para 96...")
+        aventura96()
 
 
 def aventura142():

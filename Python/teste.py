@@ -1,13 +1,19 @@
-# # # print("\nAo tocar o olho de esmeralda do ídolo, você ouve um rangido abaixo de si. Olhando na direção do ruído. Você fica abismado ao ver os dois pássaros empalhados voando. As asas dele batem aos arrancos, mas logo estão sobre você e parecem prontos para atacar. Lute com um dos GUARDIÕES VOADORES de cada vez, mas reduza a sua HABILIDADE em 3 pontos durante este combate, pois a posição restringe-lhe os movimentos.\n                                HABILIDADE          ENERGIA\nPrimeiro GUARDIÃO VOADOR     -       7                  8\nSegundo GUARDIÃO VOADOR      -      8                  8\n\nSe você vencer, volte para 11. ")
-
-# # print("\nGraças aos céus, a temperatura agora começa a cair rapidamente, e logo parece quase fresca de novo. No lado esquerdo do túnel, há uma porta fechada e nela, uma pequena placa de ferro que talvez possa ser aberta. Você:\n\nTentará abrir a porta? - Volte para 171\nTentará fazer deslizar a placa de ferro? - Volte para 156\nContinuará para o norte, subindo o túnel? - Vá para 326 ")
+habilidade = 25
 
 
-# # # print("\nAs pontas da maça do Orca penetram dolorosamente na sua coxa esquerda. Você perde 3 pontos de ENERGIA. Você cambaleia para trás, mas consegue recuperar o equilíbrio a tempo de se defender. Felizmente, o túnel é estreito demais para que ambos os Orcas ataquem-no a um só tempo. Lute com um de cada vez. \n \n                       HABILIDADE          ENERGIA\nPrimeiro ORCA     -         5                  5\nSegundo ORCA      -         6                  4\n\nSe você vencer, vá para 257.")
+def alterar_habilidade(habilidade, valor):
+    habilidade += valor
+    return habilidade
 
-# print("\nMuitas vezes você se defrontará com instruções para que lute contra algum tipo de criatura. Pode ser que exista uma opção de fuga, mas, se não houver - ou se você resolver atacar a criatura de qualquer maneira -, o combate será travado como se segue.\n\nPrimeiro, os índices de HABILIDADE e ENERGIA da criatura será registrado no primeiro quadro vazio de Encontros com Monstros da sua Folha de Aventuras.\nOs índices de cada criatura são dados a cada encontro. \n\nA sequência de combate é a seguinte: \n\n1- Jogue os dois dados uma vez para a criatura. Some o número obtido ao índice de HABILIDADE dela. Esse total é a Força de Ataque da criatura. \n\n2- Jogue os dois dados uma vez para você. Some o número obtido ao seu índice atual de HABILIDADE. Esse total é a sua Força de Ataque.\n\n3- Se sua Força de Ataque for maior que a da criatura, você a feriu. Siga para o item 4. Se a Força de Ataque da criatura for maior que a sua ela o feriu. Siga para o item 5. Se os dois totais de Força de Ataque forem iguais, vocês conseguiram evitar os golpes um do outro - comece a próxima Série de Ataque a partir do item 1 acima.\n\n4- Você feriu a criatura, subtraia 2 pontos do índice de ENERGIA dela.Você poderá usar sua SORTE para causar danos mais graves.\n\n5- A criatura feriu você, subtraia 2 pontos de seu índice de ENERGIA. Novamente, você poderá usar sua SORTE nessa fase.\n\n6- Faça os ajustes apropriados no índice de ENERGIA da criatura ou no seu próprio (e no seu índice de SORTE, se a tiver usado - veja adiante).\n\n7- Comece a próxima Série de Ataque, retornando a seu índice de HABILIDADE atual e repetindo os itens de 1-6. Esta sequência continua até que um dos índices de ENERGIA - seu, ou da criatura - fique reduzido a zero (morte).")
+def aventura72(habilidade):
+    print("CAP 72\n")
+    print("\nO Espelho se quebra, lançando fragmentos de vidro por toda parte. As quatro faces do Demônio do Espelho gritam de agonia, e aparecem rachaduras em todas elas. Em seguida, elas também se partem e caem ao chão numa pilha de cacos de vidro. Infelizmente ao quebrar o espelho, você cortou seriamente o braço com que segura a espada. Embora sua força não tenha sido afetada, sua habilidade com as armas foi prejudicada. Você perde 2 pontos de HABILIDADE antes de continuar na sua jornada para o norte. Vá para 122 ")
 
 
+    nova_habilidade = alterar_habilidade(habilidade, -2)
+
+    print(habilidade)
+    print(nova_habilidade)
 
 
-
+aventura72(habilidade)

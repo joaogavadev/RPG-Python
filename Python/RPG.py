@@ -8,17 +8,6 @@ dado_Energia1 = roda_1_dado()
 dado_Energia2 = roda_1_dado()
 dado_Sorte = roda_1_dado()
 
-#MONSTROS
-def Besta_Sangrenta():
-    global Besta_Hab, Besta_Ener
-    Besta_Hab = 12
-    Besta_Ener = 10
-
-    if Besta_Ener or Besta_Hab == 0:
-        print("Besta derrotada!, voce venceu!")
-
-    return Besta_Hab, Besta_Ener
-
 
 
 #armazenando os perks em variaveis para alterar futuramente
@@ -61,6 +50,8 @@ def alterar_habilidade(habilidade, valor):
     habilidade += valor
     return habilidade
 
+
+mochila = []
 
 def tutorial():
     rep = "s"
@@ -189,70 +180,163 @@ def char_perks():
 
 char_perks()
 
-stats_final = (f"\nx---SEU PERSONAGEM--x\n|Habilidade = {habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x")
+stats_final = (f"\nx---SEU PERSONAGEM--x\n|Habilidade = {habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x\n")
 
 
-def batalha(nivel_monstro, energia_monstro, habilidade_personagem, sorte_personagem):
+def batalha(habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome):
     print("\nA batalha começou! O que você deseja fazer?")
+
+    habilidade_inicial_monstro = habilidade_monstro
+    habilidade_inicial_perso = habilidade
     
-    while energia_monstro > 0 and habilidade_personagem > 0:
+    while energia_monstro > 0 and energia > 0:
         # Exiba informações sobre a batalha, como a energia do monstro e habilidade do personagem
-        print(f"Nível do monstro: {nivel_monstro}")
-        print(f"Energia do monstro: {energia_monstro}")
-        print(f"Sua habilidade: {habilidade_personagem}")
-        print(f"Sua sorte: {sorte_personagem}")
 
-        # Opções para o jogador
-        print("\nOpções:")
-        print("1. Atacar")
-        print("2. Fugir")
-        print("3. Usar sorte")
+        habilidade_monstro = habilidade_inicial_monstro
+        habilidade = habilidade_inicial_perso
+        input("\nPressione Enter para rodar os dados para Habilidade da criatura...")
+        x = roda_1_dado()
+        y = roda_1_dado()
+        print(f"\nO primeiro dado tirou: {x}.")
+        print(f"O segundo dado tirou: {y}.")
+        monst_habil_soma = x + y
+        habilidade_monstro = habilidade_monstro + monst_habil_soma
 
-        escolha = input("Escolha sua ação (1, 2 ou 3): ")
+        input(f"\nPressione Enter para vizualizar as informações da criatura {nome}")
 
-        if escolha == '1':
-            # O jogador escolheu atacar
-            dano_personagem = random.randint(1, 6)  # Simula um ataque aleatório
-            dano_monstro = random.randint(1, 6)  # Simula um ataque do monstro
+        print(f"\nx--------------x--------------x-----{nome}----x--------------x--------------x")
 
-            # Reduza a energia do monstro com base no dano causado
-            energia_monstro -= dano_personagem
-            print(f"Você causou {dano_personagem} de dano ao monstro.")
-            print(f"O monstro causou {dano_monstro} de dano a você.")
+        print(f"\nEnergia da criatura: {energia_monstro}\nHabilidade da criatura: {habilidade_monstro}")
 
-            # Verifique se o monstro foi derrotado
-            if energia_monstro <= 0:
-                print("Você derrotou o monstro!")
-                break
+        print("\nx--------------x--------------x-------------------------x--------------x--------------x")
 
-            # Verifique se o personagem foi derrotado
-            if habilidade_personagem <= 0:
-                print("Você foi derrotado pelo monstro...")
-                break
+        input("\n\nPressione Enter para rodar os dados para SUA Habilidade...")
 
-        elif escolha == '2':
-            # O jogador escolheu fugir
-            chance_fuga = random.randint(1, 6) + habilidade_personagem + sorte_personagem
-            
-            if chance_fuga >= 12:  # Você decide a condição para a fuga bem-sucedida
-                print("Você conseguiu fugir da batalha!")
-                break
+        k = roda_1_dado()
+        j = roda_1_dado()
+        char_hab_soma = habilidade + k + j
+
+        print(f"\nO primeiro dado tirou: {k}")
+        print(f"\nO segundo dado tirou: {j}")
+
+
+        input("\nPressione Enter para vizualizar as informações do seu personagem...")
+
+
+        print("\nx--------------x--------------x-------------------------x--------------x--------------x")
+
+        print(f"\nSua Energia: {energia}")
+        print(f"\nSua Habilidade: {char_hab_soma}")
+        print(f"\nSua Sorte: {sorte}")
+
+
+        print("\nx--------------x--------------x-------------------------x--------------x--------------x")
+        
+        print(habilidade_monstro)
+        print(char_hab_soma)
+
+        input("\n\nPressione Enter para começar a batalha...")
+
+        if char_hab_soma > habilidade_monstro:
+            print("\nA sua habilidade é maior que a do oponente. Você ataca e não sofre dano.")
+
+            escolha = input("\nVocê deseja tentar sua sorte para causar o dobro de dano?\n(1. Sim - 2. Não)")
+
+            if escolha == '1':
+                input("\nPressione Enter para testar sua sorte...")
+                #variavel dos dados
+                sorte_atq1 = random.randint(1, 6)
+                sorte_atq2 = random.randint(1, 6)
+
+                print(f"\nO primeiro dado tirou: {sorte_atq1}.")
+                print(f"O segundo dado tirou {sorte_atq2}.")
+
+                input("\nAperte Enter para ver o resultado...")
+
+                #variavel de soma dos dados
+                soma_srt = sorte_atq1 + sorte_atq2
+
+                if soma_srt <= sorte:
+                    sorte = sorte - 1
+                    print("\nVocê teve sorte! Você dá o dobro de dano, porém perde 1 de Sorte.")
+                    dano_personagem = 4
+                    energia_monstro = energia_monstro - dano_personagem
+                else:
+                    sorte = sorte - 1
+                    print("\nVocê teve má sorte! A criatura causa o dobro de dano em você, e você perde 1 de Sorte!")
+                    dano_monstro = 4
+                    energia = energia - dano_monstro
             else:
-                print("Você não conseguiu fugir e precisa continuar a batalha.")
+                print("\nVocê escolhe atacar sem sorte para dano bonus.\nVocê da 2 de dano na criatura.")
+                dano_personagem = 2
+                energia_monstro = energia_monstro - dano_personagem
 
-        elif escolha == '3':
-            # O jogador escolheu usar sorte
-            dado_sorte = roda_1_dado()  # Jogue um dado de sorte
-            print(f"Você jogou um dado de sorte e obteve: {dado_sorte}")
 
-            if dado_sorte >= 4:  # Defina a condição para a sorte ser favorável
-                print("Sua sorte está com você! Você causou dano extra ao monstro.")
-                energia_monstro -= random.randint(1, 6) + sorte_personagem
-            else:
-                print("Sua sorte não ajudou desta vez.")
 
-        else:
-            print("Opção inválida. Escolha 1 para atacar, 2 para fugir ou 3 para usar sorte.")
+        elif habilidade_monstro > char_hab_soma:
+            print("\nA habilidade da criatura é maior que a sua, Você toma 2 de dano.")
+
+            print("\nGostaria de testar sua sorte para realizar uma manobra evasiva? Nenhum dano será infligido a você, mas você perderá 1 ponto de sorte.")
+            escolha = input("\n(1. Sim - 2. Não): \n")
+            if escolha == '1':
+                input("Aperte Enter para testar sua sorte...")
+
+                a = roda_1_dado()
+                b = roda_1_dado()
+
+                print(f"\nO dado 1 tirou: {a}.")
+                print(f"\nO dado 2 tirou: {b}.")
+
+                input("Aperte Enter para ver o resultado...")
+
+                soma_evasiva = a + b
+
+                if soma_evasiva <= sorte:
+                    print("\nVocê deu sorte! Não toma nenhum dano, mas perde 1 ponto de Sorte.")
+                    sorte = sorte - 1
+
+
+
+                else:
+                    print("\nVocê não deu sorte! Você toma o dobro de dano, e perde 1 ponto de sorte.")
+                    energia = energia - 4
+                    sorte = sorte - 1
+
+
+            elif escolha == '2':
+                print("\nVocê escolhe não usar a sorte. Você toma 2 de dano.")
+                energia = energia - 2
+
+
+
+        elif habilidade_monstro == char_hab_soma:
+            print("\nO valor de habilidade dos dois é igual. Nada acontece.")
+        
+        
+        
+        
+        
+        
+        
+        print("\nx--------------x--------------x-------------------------x--------------x--------------x")
+
+        print(f"\nSua Energia: {energia}                 Energia da criatura: {energia_monstro}")    
+        print(f"\nSua Habilidade: {char_hab_soma}       -      Habilidade da criatura: {habilidade_monstro}")
+        print(f"\nSua Sorte: {sorte}")
+
+
+        print("\nx--------------x--------------x-------------------------x--------------x--------------x")
+
+    
+
+
+    return energia, sorte
+    
+
+
+
+
+
 
 
 def inicio():
@@ -333,7 +417,7 @@ def aventura1():
 
     match escolha:
         case "270":
-            aventura270()
+            aventura351()
         case "66":
             aventura66()
         case _:
@@ -540,8 +624,18 @@ def aventura19():
     
     fim_de_jogo()
 
-def aventura20():
-    print("Somente sua incrível força poderia resistir à mordida da aranha venenosa. Contudo, você está enfraquecido e repara que sua mão está tremendo ao colocar a Peça de Ouro no bolso. Reduza sua HABILIDADE em 1 ponto. Você amaldiçoa a pessoa que largou a mochila e parte para o norte de novo. Vá para 279. ")
+def aventura20(energia, habilidade, sorte, stats_final):
+    print(stats_final)
+    print("\nCAP 20")
+    print("\nSomente sua incrível força poderia resistir à mordida da aranha venenosa. Contudo, você está enfraquecido e repara que sua mão está tremendo ao colocar a Peça de Ouro no bolso. Reduza sua HABILIDADE em 1 ponto. Você amaldiçoa a pessoa que largou a mochila e parte para o norte de novo. Vá para 279. ")
+
+    energia = energia - 1
+
+    stats_final = (f"\nx---SEU PERSONAGEM--x\n|Habilidade = {habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x\n")
+
+    input("Pressione Enter para retornar para 279...")
+
+    aventura279()
 
 def aventura21():
     print("O ferimento não teve qualquer efeito sobre a Besta Sangrenta, que continua a atacá-lo tão furiosamente quanto antes. Continue o combate e, logo que vença uma Série de Ataques. Teste sua Sorte. Se você tiver sorte, vá para 97. Se não tiver sorte, vá para 116.")
@@ -577,7 +671,13 @@ def aventura31():
     print("\nO Gnomo sorri e diz: “Bom. Agora, você possui uma safira?” Se você de fato tiver uma safira, vá para 376. Se não, volte para 3. ")
 
 def aventura32():
+    print(stats_final)
+    print("\nCAP 32")
     print("\nVocê logo chega a uma outra encruzilhada no túnel. Um braço leva para o leste, mas as pegadas úmidas que você vem seguindo continuam para o norte, e você resolve continuar na trilha delas. Vá para 37. ")
+
+    input("Pressione Enter para ir para 37...")
+
+    aventura37()
 
 def aventura33():
     print("\nFoi um erro ter tateado no interior do buraco com o braço da espada. Está coberto de marcas de sucção e dá a sensação de ter sido esmagado. Você perde 3 pontos de HABILIDADE. Você dá uma espiada para dentro do buraco e vê o toco do tentáculo ensanguentado que pende inerte. Cuidadosamente, retira o gancho e a bolsa de couro, na qual encontra um minúsculo sino de latão. Você guarda suas novas posses na mochila e segue para o norte. Vá para 292. ")
@@ -594,7 +694,18 @@ def aventura36():
     print("\nEmbora você jamais tenha corrido tanto em toda a sua vida, o rochedo chega cada vez mais perto. Jogue dois dados. Se o total for igual ou menor que os seus índices tanto de HABILIDADE quanto de ENERGIA, vá para 340. Se o total for maior que qualquer um dos seus índices de HABILIDADE ou ENERGIA, volte para 7. ")
 
 def aventura37():
+    print(stats_final)
+    print("\nCAP 37")
     print("\nA passagem se alarga em uma ampla caverna, mais escura, mas muito mais seca. As pegadas desaparecem gradualmente à sua frente. Há um grande ídolo no centro da caverna, com cerca de seis metros de altura. Os olhos da estátua são jóias, cada uma do tamanho do seu punho. Duas criaturas empalhadas, com aparência de pássaros, encontram-se de pé em cada lado do ídolo. Se você quiser subir no ídolo para pegar as jóias, vá para 351. Se preferir atravessar a caverna para o túnel na parede do outro lado, vá para 239. ")
+
+    escolha = input("Ir para 351 ou 239?")
+    match escolha:
+        case '351':
+            aventura351()
+        case '239':
+            aventura239()
+        case _:
+            print("Opção Invalida!")
     
 def aventura38():
     print("\nEm silêncio, o homem fica de lado enquanto você engole a água e devora o pão. Uma dor aguda lhe invade o estômago, e você cai de joelhos. O velho olha para você com desprezo e diz: “Bem, o que pode esperar quem come comida envenenada?”. Você perde 3 pontos de ENERGIA. Ele se afasta, arrastando os pés, e o deixa se contorcendo em dores no chão. Se ainda estiver vivo, você acaba recuperando força bastante para continuar para o oeste. Vá para 109. ")
@@ -954,7 +1065,19 @@ def aventura113():
 
 
 def aventura114():
+    print(stats_final)
+    print("CAP 114")
     print("\nO Homem da Caverna está usando uma munhequeira de couro com quatro pequenos crânios de rato pendurados. Se você quiser coloca-la no seu próprio pulso, vá para 336. Se preferir prosseguir para o norte, vá para 298. ")
+
+    escolha = input("Ir para 336 ou 298?: ")
+
+    match escolha:
+        case '336':
+            aventura336()
+        case '298':
+            aventura298()
+        case _:
+            print("\nOpção invalida!")
 
 
 def aventura115():
@@ -1136,9 +1259,11 @@ def aventura149():
 def aventura150():
     print("\nTendo tido a boa idéia de não pôr o seu braço da espada dentro do buraco, os efeitos do tentáculo não são muito graves. Você perde 1 ponto de HABILIDADE. Enfiando novamente o braço no buraco, de lá retira o gancho e a bolsa de couro. Dentro da bolsa, você encontra um minúsculo sino de metal. Guarda suas novas posses na mochila e continua para o norte. Vá para 292. ")
 
-
+#tem q fazer a batalha em dupla pqp
 def aventura151():
     print("\nQuando toca o olho de esmeralda do ídolo, você ouve um rangido abaixo. Ao olhar, fica abismado ao ver os dois pássaros empalhados voando. As asas das criaturas batem aos arrancos, mas logo estão acima de você e parecem prontos para atacar. Lute com um dos GUARDIÃES VOADORES de cada vez, mas reduza sua HABILIDADE em 2 pontos durante este combate, pois a posição restringe-lhe os movimentos. \n                                HABILIDADE          ENERGIA\nPrimeiro GUARDIÃO VOADOR     -       7                  8\nSegundo GUARDIÃO VOADOR      -       8                  8\n\nSe você vencer, vá para 240. ")
+
+    habilidade_monstro = 
 
 
 def aventura152():
@@ -1159,6 +1284,15 @@ def aventura155():
 
 def aventura156():
     print("\nA pequena placa desliza e se abre facilmente, e você divisa um aposento com um poço profundo no chão atrás da porta. Na parede do outro lado, há dois ganchos de ferro, num dos quais está pendurado um rolo de corda. Se você quiser abrir a porta, pular por cima do poço e pegar a corda, vá para 208. Se preferir continuar para o norte pelo túnel, vá para 326. ")
+
+    escolha = input("ir para 208 ou 326?")
+
+    match escolha:
+        case '208':
+            mochila.append('corda')
+            aventura208()
+        case '326':
+            aventura326()
 
 
 def aventura157():
@@ -1673,7 +1807,13 @@ def aventura278():
 
 
 def aventura279():
+    print(stats_final)
+    print("\nCAP 279")
     print("\nVocê chega a um cruzamento no túnel. Uma nova ramificação leva para o oeste, mas as pegadas molhadas que você vem seguindo continuam para o norte. Você decide continuar seguindo as pegadas. Volte para 32 ")
+
+    input("\nPressione Enter para retornar para 32...")
+
+    aventura32()
 
 
 def aventura280():
@@ -1761,7 +1901,18 @@ def aventura297():
 
 
 def aventura298():
+    print(stats_final)
+    print("\nCAP 298")
     print("\nHá uma mochila encostada na parede do túnel. Você se pergunta se ela pertenceria a um de seus rivais. Se você quiser olhar dentro da mochila, vá para 304. Se preferir continuar para o norte, volte para 279. ")
+    
+    escolha = input("Ir para 304 ou 279?: ")
+    match escolha:
+        case '304':
+            aventura304(energia, habilidade, sorte, stats_final)
+        case '279':
+            aventura279()
+        case _:
+            print("Opção Invalida!")
 
 
 def aventura299():
@@ -1784,9 +1935,28 @@ def aventura303():
     print("\nCom sua mão livre, você busca a moringa na mochila. Desarrolhando-a com os dentes, derrama o ácido sobre a porta, que é na realidade a forma fluida de um IMITADOR. Um jato de fumaça sobe dela, com um alto som sibilante, enquanto o ácido começa a queimar o Imitador. Ela derrete rapidamente, e você consegue afastar-se sem se ferir. Não tendo outra alternativa, você, um tanto apreensivo, gira a maçaneta da outra porta. Volte para 262. ")
 
 
-def aventura304():
+def aventura304(energia, habilidade, sorte, stats_final):
+    print(stats_final)
+    print("\nCAP 304")
     print("\nHá uma única Peça de Ouro no fundo da mochila. Quando você tenta pegá-la, sente um leve movimento que faz cócegas nas costas, da sua mão. Você retira a mão lentamente, tentando controlar o pânico crescente, e fica horrorizado ao ver uma ARANHA VIÚVA NEGRA. Antes que possa afastá-la, ela crava as presas venenosas profundamente no seu pulso. Você perde 6 pontos de ENERGIA. Se ainda estiver vivo, volte para 20. ")
 
+
+    if energia > 0:
+        energia = energia - 6
+
+
+        print(f"\nO veneno não é o suficiente para te matar, mas agora sua energia é {energia}.")
+
+        input("\nPressione Enter para ir para 20...")
+
+        stats_final = f"\nx---SEU PERSONAGEM--x\n|Habilidade = {habilidade}\n|Energia = {energia}\n|Sorte = {sorte}\nx---------x---------x\n"
+
+        aventura20(energia, habilidade, sorte, stats_final)
+
+    else:
+        print("\nVocê nao resiste ao veneno!")
+        fim_de_jogo()
+    return energia
 
 def aventura305():
     print("\nO túnel termina em um lance de degraus de pedra. Do chão, abaixo, vêm latidos de cães. Você tem um osso velho? Se tiver, volte para 253. Se não tiver, volte para 148.")
@@ -1917,7 +2087,13 @@ def aventura335():
 
 
 def aventura336():
+    print(stats_final)
+    print("\nCAP 336")
     print("\nA munhequeira foi feita e amaldiçoada por uma Bruxa. Ela torna suas reações mais lentas e embota-lhe os sentidos. Reduza sua HABILIDADE em 4 pontos. Furioso, você chuta a parede do túnel e segue para o norte. Volte para 298. ")
+
+    input("\nPressione Enter para voltar para 298...")
+
+    aventura298()
 
 
 def aventura337():
@@ -1977,7 +2153,16 @@ def aventura350():
 
 
 def aventura351():
+    print(stats_final)
+    print("\nCAP 351")
     print("\nO ídolo é muito liso, e a escalada será difícil. Você tem corda? Se tiver, vá para 396. Se não tiver, volte para 186. ")
+
+    if 'corda' in mochila:
+        input("\nVocê usa sua corda.\n\nAperte Enter para seguir para 396.")
+        aventura396()
+    else:
+        input("\nVocê não tem uma corda.\n\nPressione Enter para voltar para 186... ")
+        aventura186()
 
 
 def aventura352():
@@ -2127,7 +2312,23 @@ def aventura386():
 
 
 def aventura387():
+    print(stats_final)
+    print("CAP ")
     print("\nDa sua frente vem o baque de passos pesados que se aproximam. Da penumbra surge um ser grande e primitivo, vestido com uma pele de animal e carregando uma clava de madeira. Ao vê-lo, ele grunhe e cospe no chão, em seguida ergue a clava e avança na sua direção, com um ar nada amigável. Você desembainha a espada e se prepara para enfrentar o HOMEM DA CAVERNA.\n\nHOMEM DA CAVERNA    -    HABILIDADE 7        ENERGIA 7\n\nSe você vencer, volte para 114. ")
+
+    habilidade_monstro = 7
+    energia_monstro = 7
+    nome = "HOMEM DA CAVERNA"
+
+
+
+
+    batalha(habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome)
+
+
+    input("\nParabens! Você venceu o Homem da Caverna!\n\nPressione Enter para voltar para 114...")
+    aventura114()
+
 
 
 def aventura388():
@@ -2163,7 +2364,16 @@ def aventura395():
 
 
 def aventura396():
+    print(stats_final)
+    print("\nCAP 396")
     print("\nVocê faz um laço com a corda, gira-o acima de si e o lança na cabeça do ídolo, sorrindo com alegria quando ele cai em torno do pescoço da estátua. Você então aperta o nó e começa a içar-se pela corda. Logo chega ao topo, sentando-se em cima do nariz do ídolo enquanto continua a segurar a corda. Você desembainha a espada e fica pensando de que olho arrancar a jóia primeiro. Se você quiser arrancar primeiro a do olho esquerdo, volte para 151. Se preferir arrancar a do olho direito, volte para 34. ")
+
+    escolha = input("ir para 151 ou 34?")
+    match escolha:
+        case '151':
+            aventura151()
+        case '34':
+            aventura34()
 
 
 def aventura397():

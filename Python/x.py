@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #TESTE SUA SORTE
 
 # x = roda_1_dado()
@@ -33,3 +34,6 @@ match escolha:
 
 
 
+=======
+print("\n\nDIABO DO POÇO    -    HABILIDADE 12        ENERGIA 15\n\nSe você vencer, vá para 258. ")
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985

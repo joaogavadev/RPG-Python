@@ -491,6 +491,7 @@ def batalha(habilidade_monstro, energia_monstro, habilidade, sorte, energia, nom
 def batalha_fuga(habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome):
     print("\nA batalha começou! O que você deseja fazer?")
 
+<<<<<<< HEAD
     habilidade_inicial_monstro = habilidade_monstro
     habilidade_inicial_perso = habilidade
     
@@ -648,6 +649,8 @@ def batalha_fuga(habilidade_monstro, energia_monstro, habilidade, sorte, energia
     return energia_monstro
 
 
+=======
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
 energia_monstro = 0
 habilidade_monstro = 0
 nome = ""
@@ -734,7 +737,11 @@ def aventura1():
 
     match escolha:
         case "270":
+<<<<<<< HEAD
             aventura51(habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome)
+=======
+            aventura326()
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
         case "66":
             aventura66()
         case _:
@@ -1997,7 +2004,11 @@ def aventura157():
     print("\nO pequeno cofre se abre facilmente; dentro, uma bolsa de veludo negro contém uma pérola grande. Some 1 ponto de SORTE. Depois de pôr a pérola no bolso, você avança em meio às teias de aranha. Vá para 310. ")
 
 
+<<<<<<< HEAD
 def aventura158(habilidade, energia):
+=======
+def aventura158():
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
     print(stats_final)
     print("\nCAP 158")
     print("\nVocê leva a moringa aos lábios e toma um gole. O líquido queima tanto que você larga a moringa e segura a garganta em agonia. Você engoliu ácido! Perde 1 ponto de HABILIDADE e 4 de ENERGIA. Se ainda estiver vivo, vá para 275.")
@@ -2451,7 +2462,11 @@ def aventura245():
     aventura258()
 
 
+<<<<<<< HEAD
 def aventura246(energia):
+=======
+def aventura246():
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
     print(stats_final)
     print("\nCAP 246")
     print("\nApesar de toda a cautela, sua perna raspa em um dos postes, que imediatamente solta uma chuva de farpas afiadas, cada uma com vários centímetros de comprimento. Você perde 2 pontos de SORTE. Elas voam em todas as direções com grande velocidade, e você não consegue evitá-las. Jogue dois dados para determinar o número de farpas que se cravam na sua carne. Cada farpa reduz sua ENERGIA em 1 ponto. Se ainda estiver vivo, você senta para a dolorosa tarefa de retirar as farpas do corpo antes de partir para o leste. Vá para 313. ")
@@ -3114,9 +3129,15 @@ def aventura334():
     print("\nVocê tenta se livrar da língua com as mãos nuas, mas não consegue. Lentamente, você é arrastado para a poça, onde, depois de decomposto pelo lodo, seu corpo será devorado pela pavorosa Besta Sangrenta. ")
 
     fim_de_jogo()
+<<<<<<< HEAD
 
 
 def aventura335(sorte):
+=======
+
+
+def aventura335():
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
     print(stats_final)
     print("\nCAP 335")
     print("\nAinda correndo o mais rápido que pode, você mergulha no rio. Teste sua Sorte. Se você tiver sorte, volte para 67. Se não tiver sorte, volte para 101. ")
@@ -3183,9 +3204,15 @@ def aventura338():
         case _:
             print("Opção Invalida!")
             aventura338()
+<<<<<<< HEAD
 
 
 def aventura339(energia):
+=======
+
+
+def aventura339():
+>>>>>>> 75b554782efb87292a1ff12a94c6279d73e69985
     print(stats_final)
     print("\nCAP 339")
     print("\nQuando você toca a maçaneta da porta, ela fica mole na sua mão, e, quando tenta tirar a mão, descobre que ela está grudada na maçaneta. Então, um punho gigantesco se forma no meio da porta e projeta-se na sua direção, atingindo-o no estômago. Você perde 1 ponto de ENERGIA. Se tiver uma moringa de ácido, volte para 303. Se não tiver, volte para 236. ")

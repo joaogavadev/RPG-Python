@@ -36,8 +36,8 @@
     # aventura12()
 
 
-    print(stats_final)
-    print("\nCAP 159")
+#     print(stats_final)
+#     print("\nCAP 159")
 
 
-habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome
+# habilidade_monstro, energia_monstro, habilidade, sorte, energia, nome
